@@ -25,24 +25,41 @@ public class DialogReservation {
         frameReservation.setVisible(true);
     }
 
-    public void handleDateSelectedEvent(LocalDate date) {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+    public void handleDateSelectedEvent(LocalDate date, boolean bool) {
+        if (bool) {
+            frameReservation.enableHeure();
+            inf.Date(date);
+        } else {
+            frameReservation.disableHeure();
+            frameReservation.disableNbPersonnes();
+            frameReservation.disableTables();
+        }
     }
 
     public void handleTimeSelectedEvent(String time) {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (!"...".equals(time)) {
+            frameReservation.enableNbPersonnes();
+            frameReservation.disableTables();
+            frameReservation.disableNbPersonnes();
+            frameReservation.enableNbPersonnes();
+            inf.Heure(time);
+        } else {
+            frameReservation.disableNbPersonnes();
+            frameReservation.initTablesVide();
+            frameReservation.disableTables();
+        }
     }
 
     public void handleNumOfPersonsSelectedEvent(int nbPersons) {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+        frameReservation.enableTables();
+        inf.NbPersonnes(nbPersons);
+        String[] Tables = inf.trouverTableDisponible(inf.getJour(), inf.getMois(), inf.getNbPersonnes(), inf.getHeure());
+        frameReservation.initTables(nbPersons,Tables);
     }
 
     public void handleTableSelectedEvent(int numTable) {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+        inf.NbTable(numTable);
+        frameReservation.initValider();
     }
 
     public void handleCancelEvent() {
