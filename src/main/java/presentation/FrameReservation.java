@@ -240,6 +240,8 @@ public class FrameReservation extends javax.swing.JFrame {
         String nbPersonnes = ChoisirNbPersonnes_ComboBox.getSelectedItem().toString();
         if (!"...".equals(nbPersonnes)) {
             dialog.handleNumOfPersonsSelectedEvent(Integer.parseInt(nbPersonnes));
+        } else {
+            disableTables();
         }
     }//GEN-LAST:event_ChoisirNbPersonnes_ComboBoxActionPerformed
 
@@ -286,6 +288,7 @@ public class FrameReservation extends javax.swing.JFrame {
         NbPersonnesTexte_jLabel.setEnabled(false);
         ChoisirNbPersonnes_ComboBox.setEnabled(false);
         ChoisirNbPersonnes_ComboBox.setSelectedIndex(0);
+        disableTables();
     }
     
     public void enableTables() {
@@ -297,27 +300,17 @@ public class FrameReservation extends javax.swing.JFrame {
     public void disableTables() {
         Table_jLabel.setEnabled(false);
         TableImage_jLabel.setEnabled(false);
+        initTablesVide();
         Tables_jList.setEnabled(false);
     }
     
-    public void initTables(int nbPersonnes, String[] tablesDispo) {
+    public void initTables(String[] tablesDispo) {
         DefaultListModel DLM = new DefaultListModel();
         int j=0;
         for (int i=0;i<tablesDispo.length;i++) {
-            if ((nbPersonnes>2)&&(nbPersonnes<=4)&&(!"Table 1".equals(tablesDispo[i]))) {
-                DLM.add(j,tablesDispo[i]);
-                j+=1;
-            } else if ((nbPersonnes>4)&&(nbPersonnes<=8)) {
-                DLM.add(j,tablesDispo[i]);
-                j+=1;
-            } else {
-                DLM.add(j,tablesDispo[i]);
-                j+=1;
-            }
-        
+            DLM.add(j,tablesDispo[i]);
+            j+=1;
         }
-        
-        
         Tables_jList.setModel(DLM);
     }
     

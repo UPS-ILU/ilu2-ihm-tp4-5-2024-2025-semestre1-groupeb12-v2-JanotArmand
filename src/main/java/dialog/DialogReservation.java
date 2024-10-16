@@ -54,7 +54,7 @@ public class DialogReservation {
         frameReservation.enableTables();
         inf.NbPersonnes(nbPersons);
         String[] Tables = inf.trouverTableDisponible(inf.getJour(), inf.getMois(), inf.getNbPersonnes(), inf.getHeure());
-        frameReservation.initTables(nbPersons,Tables);
+        frameReservation.initTables(Tables);
     }
 
     public void handleTableSelectedEvent(int numTable) {

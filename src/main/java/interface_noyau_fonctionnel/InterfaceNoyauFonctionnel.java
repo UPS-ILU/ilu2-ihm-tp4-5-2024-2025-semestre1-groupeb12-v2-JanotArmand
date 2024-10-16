@@ -12,7 +12,28 @@ public class InterfaceNoyauFonctionnel {
     int nbTableReservation;
 
     public String[] trouverTableDisponible(int jour, int mois, int nombrePersonnes, String time) {
-        return new String[]{"Table 1", "Table 2", "Table 3", "Table 4", "Table 5", "Table 6"};
+        String[] Tables = new String[]{"Table 1", "Table 2", "Table 3", "Table 4", "Table 5", "Table 6"};
+        String[] TablesDispo = new String[Tables.length];
+        int j=0;
+        if ((nombrePersonnes>2)&&(nombrePersonnes<=4)) {
+            for (int i=0;i<Tables.length;i++) {
+                if (!"Table 1".equals(Tables[i])) {
+                    TablesDispo[j]=Tables[i];
+                    j+=1;
+                }
+            }
+        } else if ((nombrePersonnes>4)&&(nombrePersonnes<=8)) {
+            for (int i=0;i<Tables.length;i++) {
+                if ("Table 6".equals(Tables[i])) {
+                    TablesDispo[j]=Tables[i];
+                    j+=1;
+                }
+            }
+        } else {
+            return Tables;
+        }
+        
+        return TablesDispo;
     }
     
     public void Date(LocalDate date) {
