@@ -25,14 +25,8 @@ public class DialogReservation {
         frameReservation.setVisible(true);
     }
 
-    public void handleDateSelectedEvent(LocalDate date, boolean bool) {
-        if (bool) {
-            frameReservation.enableHeure();
-            inf.Date(date);
-        } else {
-            frameReservation.disableHeure();
-            frameReservation.enableHeure();
-        }
+    public void handleDateSelectedEvent(LocalDate date) {
+        inf.Date(date);
     }
 
     public void handleTimeSelectedEvent(String time) {
