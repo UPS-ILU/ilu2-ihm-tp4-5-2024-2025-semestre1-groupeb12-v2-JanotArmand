@@ -32,7 +32,11 @@ public class DialogReservation {
     }
 
     public void handleDateSelectedEvent(LocalDate date) {
-        inf.Date(date);
+        if (date!=null) {
+            inf.Date(date);
+        }
+        frameReservation.disableHeure();
+        frameReservation.enableHeure();
     }
 
     public void handleTimeSelectedEvent(String time) {
@@ -69,6 +73,7 @@ public class DialogReservation {
     
     public void handleConfirmationReservationEvent() {
         frameConfirmation.setVisible(false);
+        frameReservation.disableDate();
     }
 
     public static void main(String[] args) {

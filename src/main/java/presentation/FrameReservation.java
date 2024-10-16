@@ -267,8 +267,6 @@ public class FrameReservation extends javax.swing.JFrame {
 
     public void datePickerDateChanged(DateChangeEvent dateEvent) {
         dialog.handleDateSelectedEvent(dateEvent.getNewDate()); 
-        disableHeure();
-        enableHeure();
     }
     
     public void disableDate() {
