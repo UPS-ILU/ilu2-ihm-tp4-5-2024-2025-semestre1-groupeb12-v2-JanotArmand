@@ -7,12 +7,14 @@ package dialog;
 import interface_noyau_fonctionnel.InterfaceNoyauFonctionnel;
 import java.awt.EventQueue;
 import java.time.LocalDate;
+import presentation.FrameConfirmation;
 import presentation.FrameReservation;
 
 public class DialogReservation {
 
     private FrameReservation frameReservation;
     private InterfaceNoyauFonctionnel inf;
+    private FrameConfirmation frameConfirmation;
 
     public DialogReservation(InterfaceNoyauFonctionnel inf) {
         this.inf = inf;
@@ -23,6 +25,10 @@ public class DialogReservation {
         frameReservation.initFrame();
         frameReservation.setDialog(this);
         frameReservation.setVisible(true);
+        
+        frameConfirmation = new FrameConfirmation();
+        //frameConfirmation.initFrame();
+        //frameConfirmation.setDialog(this);
     }
 
     public void handleDateSelectedEvent(LocalDate date) {
@@ -56,8 +62,9 @@ public class DialogReservation {
     }
 
     public void handleValidationEvent() {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+        String texte = inf.MessageValidation();
+        frameConfirmation.InitTexte(texte);
+        frameConfirmation.setVisible(true);
     }
 
     public static void main(String[] args) {

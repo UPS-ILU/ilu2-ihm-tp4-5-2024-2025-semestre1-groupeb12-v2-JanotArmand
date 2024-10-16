@@ -80,8 +80,8 @@ public class InterfaceNoyauFonctionnel {
         return nbTableReservation;
     }
     
-    public String MessageValidation(LocalDate Date, String Time, int NbPersons, int NbTable) {
-        String msg = "Réservation validée pour le " + Date.toString() + " à " + Time + " pour " + NbPersons + " personnes à la " + TablesReservation[NbTable] + ".";
+    public String MessageValidation() {
+        String msg = "<html>Réservation validée pour le <html>" + DateReservation.toString() + " à " + HeureReservation + " pour " + nbPersonnesReservation + " personnes à la " + TablesReservation[nbTableReservation] + ".";
         return msg;
     }
 
