@@ -9,6 +9,7 @@ import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import dialog.DialogReservation;
 import java.time.LocalDate;
 import javax.swing.DefaultListModel;
+import javax.swing.ListSelectionModel;
 
 @SuppressWarnings("serial")
 public class FrameReservation extends javax.swing.JFrame {
@@ -259,8 +260,9 @@ public class FrameReservation extends javax.swing.JFrame {
     }//GEN-LAST:event_ChoisirHeure_ComboBoxActionPerformed
 
     private void Tables_jListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_Tables_jListValueChanged
-        String nbTable = Tables_jList.getSelectedValue();
-        dialog.handleTableSelectedEvent(Integer.parseInt(nbTable));
+        int nbTable = Tables_jList.getSelectedIndex();
+        dialog.handleTableSelectedEvent(nbTable);
+        enableValider();
     }//GEN-LAST:event_Tables_jListValueChanged
 
     public void datePickerDateChanged(DateChangeEvent dateEvent) {
@@ -309,9 +311,11 @@ public class FrameReservation extends javax.swing.JFrame {
         TableImage_jLabel.setEnabled(false);
         initTablesVide();
         Tables_jList.setEnabled(false);
+        disableValider();
     }
     
     public void initTables(String[] tablesDispo) {
+        Tables_jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         DefaultListModel DLM = new DefaultListModel();
         int j=0;
         for (int i=0;i<tablesDispo.length;i++) {
@@ -326,8 +330,12 @@ public class FrameReservation extends javax.swing.JFrame {
         Tables_jList.setModel(DLM);
     }
     
-    public void initValider() {
+    public void enableValider() {
         Valider_jButton.setEnabled(true);
+    }
+    
+    public void disableValider() {
+        Valider_jButton.setEnabled(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

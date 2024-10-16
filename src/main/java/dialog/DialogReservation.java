@@ -48,7 +48,6 @@ public class DialogReservation {
 
     public void handleTableSelectedEvent(int numTable) {
         inf.NbTable(numTable);
-        frameReservation.initValider();
     }
 
     public void handleCancelEvent() {

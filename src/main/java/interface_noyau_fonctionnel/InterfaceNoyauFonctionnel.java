@@ -9,6 +9,7 @@ public class InterfaceNoyauFonctionnel {
     int MoisReservation;
     String HeureReservation;
     int nbPersonnesReservation;
+    String[] TablesReservation;
     int nbTableReservation;
 
     public String[] trouverTableDisponible(int jour, int mois, int nombrePersonnes, String time) {
@@ -30,9 +31,10 @@ public class InterfaceNoyauFonctionnel {
                 }
             }
         } else {
+            TablesReservation=Tables;
             return Tables;
         }
-        
+        TablesReservation=TablesDispo;
         return TablesDispo;
     }
     
@@ -40,6 +42,10 @@ public class InterfaceNoyauFonctionnel {
         this.DateReservation = date;
         this.JourReservation = date.getDayOfMonth();
         this.MoisReservation = date.getMonthValue();
+    }
+    
+    public LocalDate getDate() {
+        return DateReservation;
     }
     
     public int getJour() {
@@ -75,7 +81,7 @@ public class InterfaceNoyauFonctionnel {
     }
     
     public String MessageValidation(LocalDate Date, String Time, int NbPersons, int NbTable) {
-        String msg = "Réservation validée pour le " + Date.toString() + " à " + Time + " pour " + NbPersons + " personnes à la " + NbTable + ".";
+        String msg = "Réservation validée pour le " + Date.toString() + " à " + Time + " pour " + NbPersons + " personnes à la " + TablesReservation[NbTable] + ".";
         return msg;
     }
 
