@@ -250,7 +250,7 @@ public class FrameReservation extends javax.swing.JFrame {
     }//GEN-LAST:event_Valider_jButtonActionPerformed
 
     private void Annuler_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Annuler_jButtonActionPerformed
-        
+        dialog.handleCancelEvent();
     }//GEN-LAST:event_Annuler_jButtonActionPerformed
 
     private void ChoisirHeure_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChoisirHeure_ComboBoxActionPerformed
@@ -270,6 +270,11 @@ public class FrameReservation extends javax.swing.JFrame {
         }
     }
     
+    public void disableDate() {
+        datePicker.clear();
+        disableHeure();
+    }
+    
     public void enableHeure() {
         HeureTexte_jLabel.setEnabled(true);
         ChoisirHeure_ComboBox.setEnabled(true);
@@ -277,6 +282,9 @@ public class FrameReservation extends javax.swing.JFrame {
     
     public void disableHeure() {
         ChoisirHeure_ComboBox.setSelectedIndex(0);
+        ChoisirHeure_ComboBox.setEnabled(false);
+        HeureTexte_jLabel.setEnabled(false);
+        disableNbPersonnes();
     }
     
     public void enableNbPersonnes() {

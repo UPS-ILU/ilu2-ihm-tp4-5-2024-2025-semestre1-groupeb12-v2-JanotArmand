@@ -31,22 +31,17 @@ public class DialogReservation {
             inf.Date(date);
         } else {
             frameReservation.disableHeure();
-            frameReservation.disableNbPersonnes();
-            frameReservation.disableTables();
+            frameReservation.enableHeure();
         }
     }
 
     public void handleTimeSelectedEvent(String time) {
         if (!"...".equals(time)) {
-            frameReservation.enableNbPersonnes();
-            frameReservation.disableTables();
             frameReservation.disableNbPersonnes();
             frameReservation.enableNbPersonnes();
             inf.Heure(time);
         } else {
             frameReservation.disableNbPersonnes();
-            frameReservation.initTablesVide();
-            frameReservation.disableTables();
         }
     }
 
@@ -63,8 +58,8 @@ public class DialogReservation {
     }
 
     public void handleCancelEvent() {
-        //TODO
-        throw new UnsupportedOperationException("Not implemented yet");
+        frameReservation.disableDate();
+        
     }
 
     public void handleValidationEvent() {
