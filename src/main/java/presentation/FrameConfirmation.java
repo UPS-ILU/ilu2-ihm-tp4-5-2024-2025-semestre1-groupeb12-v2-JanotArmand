@@ -4,6 +4,8 @@
  */
 package presentation;
 
+import dialog.DialogReservation;
+
 /**
  *
  * @author punai
@@ -13,8 +15,19 @@ public class FrameConfirmation extends javax.swing.JDialog {
     /**
      * Creates new form FrameConfirmation
      */
+    
+    private DialogReservation dialog;
+    
+    
     public FrameConfirmation() {
+    }
+    
+    public void initFrame() {
         initComponents();
+    }
+    
+    public void setDialog(DialogReservation dialog) {
+        this.dialog = dialog;
     }
 
     /**
@@ -28,10 +41,18 @@ public class FrameConfirmation extends javax.swing.JDialog {
 
         TexteConfirmation_jLabel = new javax.swing.JLabel();
         Icon_jLabel = new javax.swing.JLabel();
+        OK_jButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
+
+        OK_jButton.setText("OK");
+        OK_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OK_jButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -39,23 +60,32 @@ public class FrameConfirmation extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(Icon_jLabel)
-                .addGap(18, 18, 18)
-                .addComponent(TexteConfirmation_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(OK_jButton)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Icon_jLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(TexteConfirmation_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Icon_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                     .addComponent(TexteConfirmation_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(OK_jButton)
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void OK_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OK_jButtonActionPerformed
+        dialog.handleConfirmationReservationEvent();
+    }//GEN-LAST:event_OK_jButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,6 +135,7 @@ public class FrameConfirmation extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Icon_jLabel;
+    private javax.swing.JButton OK_jButton;
     private javax.swing.JLabel TexteConfirmation_jLabel;
     // End of variables declaration//GEN-END:variables
 }

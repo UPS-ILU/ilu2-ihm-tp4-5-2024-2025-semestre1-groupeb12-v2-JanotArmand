@@ -27,8 +27,8 @@ public class DialogReservation {
         frameReservation.setVisible(true);
         
         frameConfirmation = new FrameConfirmation();
-        //frameConfirmation.initFrame();
-        //frameConfirmation.setDialog(this);
+        frameConfirmation.initFrame();
+        frameConfirmation.setDialog(this);
     }
 
     public void handleDateSelectedEvent(LocalDate date) {
@@ -65,6 +65,10 @@ public class DialogReservation {
         String texte = inf.MessageValidation();
         frameConfirmation.InitTexte(texte);
         frameConfirmation.setVisible(true);
+    }
+    
+    public void handleConfirmationReservationEvent() {
+        frameConfirmation.setVisible(false);
     }
 
     public static void main(String[] args) {
